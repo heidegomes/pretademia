@@ -42,6 +42,7 @@
     "locate-path": "^2.0.0",
     "lodash.padend": "^4.6.1",
     "magicli": "^0.0.8",
+    "mysql2": "2.1.0",
     "node.extend": "^2.0.2",
     "object-to-arguments": "^0.0.8",
     "p-limit": "^1.3.0",
@@ -54,6 +55,7 @@
     "readable-stream": "^3.6.2",
     "reduce-flatten": "^1.0.1",
     "safe-buffer": "^5.2.1",
+    "sequelize": "6.3.4",
     "split-skip": "^0.0.2",
     "sprintf-js": "^1.0.3",
     "ssf": "^0.10.3",
@@ -72,7 +74,10 @@
     "yargs-parser": "^7.0.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json ."
   },
   "repository": {
     "type": "git",
@@ -87,6 +92,7 @@
   "homepage": "https://github.com/heidegomes/pretademia#readme",
   "devDependencies": {
     "eslint": "6.8.0",
-    "eslint-config-trybe-backend": "1.0.1"
+    "eslint-config-trybe-backend": "1.0.1",
+    "nodemon": "2.0.15"
   }
 }
