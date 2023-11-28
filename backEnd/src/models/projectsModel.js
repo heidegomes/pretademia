@@ -7,7 +7,7 @@ const getAll = async (object) => {
     palavra_chave, resumo, linha_pesquisa, orientador, nm_uf_ies, on_line,
     hyperlink } = object;
 
-  let query = 'SELECT * FROM teses_validadas WHERE 1=1'
+  let query = 'SELECT * FROM teses_validadas WHERE 1=1';
   const values = [];
   if (ano != null) {
     query += ' AND ano = ?';
@@ -87,6 +87,7 @@ const getAll = async (object) => {
   }
 
   const [result] = await connection.execute(query, values);
+  console.log(result);
   return result;
 };
 

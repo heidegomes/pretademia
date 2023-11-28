@@ -26,8 +26,7 @@ const getAll = async (req, res) => {
   };
 
   const result = await projectsService.getAll(object);
-  print(result[0])
-  res.status(200).json(result[0]);
+  res.status(200).json(result);
 };
 
 module.exports = {
