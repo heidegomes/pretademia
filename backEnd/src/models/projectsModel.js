@@ -7,6 +7,8 @@ const getAll = async (object) => {
     palavra_chave, resumo, linha_pesquisa, orientador, nm_uf_ies, on_line,
     hyperlink } = object;
 
+  let { limit, offset } = object;
+
   let query = 'SELECT * FROM teses_validadas WHERE 1=1';
   const values = [];
   if (ano != null) {
@@ -86,8 +88,19 @@ const getAll = async (object) => {
     values.push(hyperlink);
   }
 
+  if (!limit) {
+    limit = 10;
+  }
+  if (!offset) {
+    offset = 0;
+  }
+  values.push(limit);
+  values.push(offset);
+
+  query += ' LIMIT ? OFFSET ?';
+
   const [result] = await connection.execute(query, values);
-  console.log(result);
+  // console.log(result);
   return result;
 };
 

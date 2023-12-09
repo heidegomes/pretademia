@@ -19,6 +19,7 @@
     "commander": "^2.15.1",
     "concat-stream": "^2.0.0",
     "convert-excel-to-json": "^1.7.0",
+    "cors": "^2.8.5",
     "crc-32": "^1.2.2",
     "csv": "^0.3.7",
     "deep-extend": "^0.6.0",

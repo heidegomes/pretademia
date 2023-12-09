@@ -23,6 +23,8 @@ const getAll = async (req, res) => {
     nm_uf_ies: req.query.nm_uf_ies,
     on_line: req.query.on_line,
     hyperlink: req.query.hyperlink,
+    limit: req.query.limit,
+    offset: req.query.offset,
   };
 
   const result = await projectsService.getAll(object);
