@@ -10,6 +10,8 @@ const Filtro = () => {
   const [selectedYear, setSelectedYear] = useState('');
   const [selectedRegiao, setSelectedRegiao] = useState('');
   const [selectedUF, setSelectedUF] = useState('');
+  const [entidadeEnsinoData, setEntidadeEnsinoData] = useState([]);
+  const [selectedEntidadeEnsino, setSelectedEntidadeEnsino] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,9 +24,18 @@ const Filtro = () => {
       }
     };
     fetchData();
-  }, []);
 
-  console.log(data);
+    const fetchEntidadeEnsino = async () => {
+      try {
+        const entidadeEnsino = await fetch('http://localhost:3001/entidadeEnsino');
+        const entidadeEnsinoData = await entidadeEnsino.json();
+        setEntidadeEnsinoData(entidadeEnsinoData);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchEntidadeEnsino();
+  }, []);
 
   const handleFilter = () => {  // Aplica o filtro apenas quando o botão é clicado
     const queryParams = {};
@@ -137,9 +148,11 @@ const Filtro = () => {
             id="entidade_ensino"
             onChange={(e) => setSelectedEntidadeEnsino(e.target.value)}
           >
-            <option value={data.entidade_ensino} name={data.entidade_ensino} key={data.entidade_ensino}>
-              {data.entidade_ensino}
-            </option>
+            {entidadeEnsinoData.map((e) => (
+              <option value={e.entidade_ensino} name={e.entidade_ensino} key={e.entidade_ensino}>
+                {e.entidade_ensino}
+              </option>
+            ))}
           </select>
         </label>
       </div>
