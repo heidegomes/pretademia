@@ -31,13 +31,18 @@ const getAll = async (req, res) => {
   res.status(200).json(result);
 };
 
-
 const getEntidadeEnsino = async (_req, res) => {
   const result = await projectsService.getEntidadeEnsino();
+  res.status(200).json(result);
+}
+
+const getPrograma = async (_req, res) => {
+  const result = await projectsService.getPrograma();
   res.status(200).json(result);
 }
 
 module.exports = {
   getAll,
   getEntidadeEnsino,
+  getPrograma,
 };  

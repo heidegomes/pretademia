@@ -110,7 +110,14 @@ const getEntidadeEnsino = async () => {
   return result;
 }
 
+const getPrograma = async () => {
+  const query = 'SELECT DISTINCT programa FROM teses_validadas ORDER BY programa; ';
+  const [result] = await connection.execute(query);
+  return result;
+}
+
 module.exports = {
   getAll,
   getEntidadeEnsino,
+  getPrograma,
 };  
