@@ -128,10 +128,17 @@ const getAreaConhecimento = async () => {
   return result;
 }
 
+const getAreaAvaliacao = async () => {
+  const query = 'SELECT DISTINCT area_avaliacao FROM teses_validadas ORDER BY area_avaliacao; ';
+  const [result] = await connection.execute(query);
+  return result;
+}
+
 module.exports = {
   getAll,
   getEntidadeEnsino,
   getPrograma,
   getGrandeAreaConhecimento,
   getAreaConhecimento,
+  getAreaAvaliacao,
 };  

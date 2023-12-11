@@ -8,5 +8,6 @@ projectsRouter.get('/entidadeEnsino', projectsController.getEntidadeEnsino);
 projectsRouter.get('/programa', projectsController.getPrograma);
 projectsRouter.get('/grandeAreaConhecimento', projectsController.getGrandeAreaConhecimento);
 projectsRouter.get('/areaConhecimento', projectsController.getAreaConhecimento);
+projectsRouter.get('/areaAvaliacao', projectsController.getAreaAvaliacao);
 
 module.exports = projectsRouter;

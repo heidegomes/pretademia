@@ -24,10 +24,16 @@ const getAreaConhecimento = async () => {
   return result;
 }
 
+const getAreaAvaliacao = async () => {
+  const result = await projectsModel.getAreaAvaliacao();
+  return result;
+}
+
 module.exports = {
   getAll,
   getEntidadeEnsino,
   getPrograma,
   getGrandeAreaConhecimento,
   getAreaConhecimento,
+  getAreaAvaliacao,
 };
