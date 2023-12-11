@@ -5,6 +5,12 @@ const getAll = async (object) => {
   return result;
 };
 
+const getEntidadeEnsino = async (object) => {
+  const result = await projectsModel.getEntidadeEnsino();
+  return result;
+}
+
 module.exports = {
   getAll,
+  getEntidadeEnsino,
 };

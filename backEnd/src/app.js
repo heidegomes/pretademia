@@ -7,6 +7,6 @@ const cors = require('cors');
 app.use(cors());
 
 app.use(express.json());
-app.use('/projects', projectsRoutes);
+app.use('/', projectsRoutes);
 
 module.exports = app;

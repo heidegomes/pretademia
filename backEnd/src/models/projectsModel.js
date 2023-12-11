@@ -104,6 +104,13 @@ const getAll = async (object) => {
   return result;
 };
 
+const getEntidadeEnsino = async () => {
+  const query = 'SELECT DISTINCT entidade_ensino FROM teses_validadas ORDER BY entidade_ensino; ';
+  const [result] = await connection.execute(query);
+  return result;
+}
+
 module.exports = {
   getAll,
+  getEntidadeEnsino,
 };  

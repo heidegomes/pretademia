@@ -10,6 +10,7 @@ const Table = ({ filteredData }) => {
             <th>Ano</th>
             <th>Região</th>
             <th>UF</th>
+            <th>Entidade de Ensino</th>
             {/* Adicione outros cabeçalhos conforme necessário */}
           </tr>
         </thead>
@@ -19,6 +20,7 @@ const Table = ({ filteredData }) => {
               <td>{item.ano}</td>
               <td>{item.regiao}</td>
               <td>{item.uf_ies}</td>
+              <td>{item.entidade_ensino}</td>
               {/* Adicione outras células conforme necessário */}
             </tr>
           ))}

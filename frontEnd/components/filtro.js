@@ -32,6 +32,7 @@ const Filtro = () => {
     if (selectedYear) queryParams.ano = selectedYear;
     if (selectedRegiao) queryParams.regiao = selectedRegiao;
     if (selectedUF) queryParams.uf = selectedUF;
+    if (selectedEntidadeEnsino) queryParams.entidade_ensino = selectedEntidadeEnsino;
 
     router.push({
       pathname: '/',
@@ -126,6 +127,19 @@ const Filtro = () => {
                 {e}
               </option>
             ))}
+          </select>
+        </label>
+      </div>
+      <div>
+        <label htmlFor="entidade_ensino">Entidade de Ensino:
+          <select
+            name="entidade_ensino"
+            id="entidade_ensino"
+            onChange={(e) => setSelectedEntidadeEnsino(e.target.value)}
+          >
+            <option value={data.entidade_ensino} name={data.entidade_ensino} key={data.entidade_ensino}>
+              {data.entidade_ensino}
+            </option>
           </select>
         </label>
       </div>
