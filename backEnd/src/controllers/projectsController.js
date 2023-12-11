@@ -46,9 +46,15 @@ const getGrandeAreaConhecimento = async (_req, res) => {
   res.status(200).json(result);
 }
 
+const getAreaConhecimento = async (_req, res) => {
+  const result = await projectsService.getAreaConhecimento();
+  res.status(200).json(result);
+}
+
 module.exports = {
   getAll,
   getEntidadeEnsino,
   getPrograma,
   getGrandeAreaConhecimento,
+  getAreaConhecimento,
 };  

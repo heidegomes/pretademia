@@ -7,5 +7,6 @@ projectsRouter.get('/projects', projectsController.getAll);
 projectsRouter.get('/entidadeEnsino', projectsController.getEntidadeEnsino);
 projectsRouter.get('/programa', projectsController.getPrograma);
 projectsRouter.get('/grandeAreaConhecimento', projectsController.getGrandeAreaConhecimento);
+projectsRouter.get('/areaConhecimento', projectsController.getAreaConhecimento);
 
 module.exports = projectsRouter;
