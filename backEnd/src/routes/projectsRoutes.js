@@ -6,5 +6,6 @@ const projectsRouter = Router();
 projectsRouter.get('/projects', projectsController.getAll);
 projectsRouter.get('/entidadeEnsino', projectsController.getEntidadeEnsino);
 projectsRouter.get('/programa', projectsController.getPrograma);
+projectsRouter.get('/grandeAreaConhecimento', projectsController.getGrandeAreaConhecimento);
 
 module.exports = projectsRouter;

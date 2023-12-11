@@ -116,8 +116,15 @@ const getPrograma = async () => {
   return result;
 }
 
+const getGrandeAreaConhecimento = async () => {
+  const query = 'SELECT DISTINCT grande_area_conhecimento FROM teses_validadas ORDER BY grande_area_conhecimento; ';
+  const [result] = await connection.execute(query);
+  return result;
+}
+
 module.exports = {
   getAll,
   getEntidadeEnsino,
   getPrograma,
+  getGrandeAreaConhecimento,
 };  
