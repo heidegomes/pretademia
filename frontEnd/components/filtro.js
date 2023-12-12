@@ -12,6 +12,15 @@ const Filtro = () => {
   const [selectedUF, setSelectedUF] = useState('');
   const [entidadeEnsinoData, setEntidadeEnsinoData] = useState([]);
   const [selectedEntidadeEnsino, setSelectedEntidadeEnsino] = useState('');
+  const [programaData, setProgramaData] = useState([]);
+  const [selectedPrograma, setSelectedPrograma] = useState('');
+  const [grandeAreaConhecimentoData, setGrandeAreaConhecimentoData] = useState([]);
+  const [selectedGrandeAreaConhecimento, setSelectedGrandeAreaConhecimento] = useState('');
+  const [areaConhecimentoData, setAreaConhecimentoData] = useState([]);
+  const [selectedAreaConhecimento, setSelectedAreaConhecimento] = useState('');
+  const [areaAvaliacaoData, setAreaAvaliacaoData] = useState([]);
+  const [selectedAreaAvaliacao, setSelectedAreaAvaliacao] = useState('');
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,6 +44,51 @@ const Filtro = () => {
       }
     };
     fetchEntidadeEnsino();
+
+    const fetchPrograma = async () => {
+      try {
+        const programa = await fetch('http://localhost:3001/programa');
+        const programaData = await programa.json();
+        setProgramaData(programaData);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchPrograma();
+
+    const fetchGrandeAreaConhecimento = async () => {
+      try {
+        const grandeAreaConhecimento = await fetch('http://localhost:3001/grandeAreaConhecimento');
+        const grandeAreaConhecimentoData = await grandeAreaConhecimento.json();
+        setGrandeAreaConhecimentoData(grandeAreaConhecimentoData);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetchGrandeAreaConhecimento();
+
+    const fetchAreaConhecimento = async () => {
+      try {
+        const areaConhecimento = await fetch('http://localhost:3001/areaConhecimento');
+        const areaConhecimentoData = await areaConhecimento.json();
+        setAreaConhecimentoData(areaConhecimentoData);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetchAreaConhecimento();
+
+    const fetchAreaAvaliacao = async () => {
+      try {
+        const areaAvaliacao = await fetch('http://localhost:3001/areaAvaliacao');
+        const areaAvaliacaoData = await areaAvaliacao.json();
+        setAreaAvaliacaoData(areaAvaliacaoData);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetchAreaAvaliacao();
+
   }, []);
 
   const handleFilter = () => {  // Aplica o filtro apenas quando o botão é clicado
@@ -151,6 +205,66 @@ const Filtro = () => {
             {entidadeEnsinoData.map((e) => (
               <option value={e.entidade_ensino} name={e.entidade_ensino} key={e.entidade_ensino}>
                 {e.entidade_ensino}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+      <div>
+        <label htmlFor="programa">Programa:
+          <select
+            name="programa"
+            id="programa"
+            onChange={(e) => setSelectedPrograma(e.target.value)}
+          >
+            {programaData.map((e) => (
+              <option value={e.programa} name={e.programa} key={e.programa}>
+                {e.programa}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+      <div>
+        <label htmlFor="grande_area_conhecimento">Grande Área de Conhecimento:
+          <select
+            name="grande_area_conhecimento"
+            id="grande_area_conhecimento"
+            onChange={(e) => setSelectedGrandeAreaConhecimento(e.target.value)}
+          >
+            {grandeAreaConhecimentoData.map((e) => (
+              <option value={e.grande_area_conhecimento} name={e.grande_area_conhecimento} key={e.grande_area_conhecimento}>
+                {e.grande_area_conhecimento}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+      <div>
+        <label htmlFor="area_conhecimento">Área de Conhecimento:
+          <select
+            name="area_conhecimento"
+            id="area_conhecimento"
+            onChange={(e) => setSelectedAreaConhecimento(e.target.value)}
+          >
+            {areaConhecimentoData.map((e) => (
+              <option value={e.area_conhecimento} name={e.area_conhecimento} key={e.area_conhecimento}>
+                {e.area_conhecimento}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+      <div>
+        <label htmlFor="area_avaliacao">Área de Avaliação:
+          <select
+            name="area_avaliacao"
+            id="area_avaliacao"
+            onChange={(e) => setSelectedAreaAvaliacao(e.target.value)}
+          >
+            {areaAvaliacaoData.map((e) => (
+              <option value={e.area_avaliacao} name={e.area_avaliacao} key={e.area_avaliacao}>
+                {e.area_avaliacao}
               </option>
             ))}
           </select>
