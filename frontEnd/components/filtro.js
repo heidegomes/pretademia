@@ -1,7 +1,7 @@
 // Client component
 import React, { useEffect, useState } from 'react';
 import styles from './filtro.module.css';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { years, regions, uf, grauAcademico } from '../services/dataFilters';
 
 
@@ -88,7 +88,7 @@ const Filtro = () => {
 
   const handleFilter = () => {  // Aplica o filtro apenas quando o botão é clicado
     const queryParams = {};
-
+    console.log("cliquei aqui")
     if (filterTitulo) queryParams.titulo = filterTitulo;
     if (filterDiscente) queryParams.discente = filterDiscente;
     if (filterOrientador) queryParams.orientador = filterOrientador;
@@ -104,10 +104,7 @@ const Filtro = () => {
     if (selectedAreaConhecimento) queryParams.area_conhecimento = selectedAreaConhecimento;
     if (selectedAreaAvaliacao) queryParams.area_avaliacao = selectedAreaAvaliacao;
 
-    router.push({
-      pathname: '/',
-      query: queryParams,
-    });
+    router.push(`search=${queryParams}`);
   };
 
   return (

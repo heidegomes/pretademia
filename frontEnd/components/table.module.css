@@ -1,6 +1,6 @@
 .table__container {
   /* border: red 1px solid; */
-  width: 1140;
+  width: 2000px;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   background-color: black;
@@ -8,16 +8,32 @@
   padding-right: 78px;
   padding-left: 50px;
   padding-bottom: 50px;
-  display: flex;
   justify-content: center;
+  overflow: scroll
 }
 
 .table {
-  width: 1114px;
   color: white;
   background-color: black;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 13px;
   border-collapse: collapse;
-  table-layout: fixed;
+}
+
+.th {
+  text-align: center;
+  font-weight: bold;
+  color: yellow;
+}
+
+.td {
+  text-align: center;
+  height: 50px;
+  word-wrap: break-word;
+}
+
+.table,
+.th,
+.td {
+  border-bottom: 1px solid #ddd;
 }
