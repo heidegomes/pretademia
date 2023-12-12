@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './filtro.module.css';
 import { useRouter } from 'next/router';
+import { years, regions, uf } from '../services/dataFilters';
 
 
 const Filtro = () => {
@@ -98,55 +99,16 @@ const Filtro = () => {
     if (selectedRegiao) queryParams.regiao = selectedRegiao;
     if (selectedUF) queryParams.uf = selectedUF;
     if (selectedEntidadeEnsino) queryParams.entidade_ensino = selectedEntidadeEnsino;
+    if (selectedPrograma) queryParams.programa = selectedPrograma;
+    if (selectedGrandeAreaConhecimento) queryParams.grande_area_conhecimento = selectedGrandeAreaConhecimento;
+    if (selectedAreaConhecimento) queryParams.area_conhecimento = selectedAreaConhecimento;
+    if (selectedAreaAvaliacao) queryParams.area_avaliacao = selectedAreaAvaliacao;
 
     router.push({
       pathname: '/',
       query: queryParams,
     });
   };
-
-  const years = []
-  for (let i = 1987; i <= new Date().getFullYear(); i++) {
-    years.push(i);
-  }
-
-  const regions = [
-    'Centro-Oeste',
-    'Nordeste',
-    'Norte',
-    'Sudeste',
-    'Sul',
-  ];
-
-  const uf = [
-    'AC',
-    'AL',
-    'AM',
-    'AP',
-    'BA',
-    'CE',
-    'DF',
-    'ES',
-    'GO',
-    'MA',
-    'MG',
-    'MS',
-    'MT',
-    'PA',
-    'PB',
-    'PE',
-    'PI',
-    'PR',
-    'RJ',
-    'RN',
-    'RO',
-    'RR',
-    'RS',
-    'SC',
-    'SE',
-    'SP',
-    'TO',
-  ]
 
   return (
     <div className={styles.filtro_container}>
