@@ -41,8 +41,14 @@ const uf = [
   'TO',
 ]
 
+const grauAcademico = [
+  'Mestrado',
+  'Doutorado',
+]
+
 module.exports = {
   years,
   regions,
   uf,
+  grauAcademico,
 };
