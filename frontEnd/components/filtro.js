@@ -1,13 +1,13 @@
 // Client component
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styles from './filtro.module.css';
 import { useRouter } from 'next/navigation';
 import { years, regions, uf, grauAcademico } from '../services/dataFilters';
+import { pretademiaContext } from '../context/pretademiaContext';
 
 
 const Filtro = () => {
   const router = useRouter();
-  const [filteredData, setFilteredData] = useState([]);
   const [filterTitulo, setFilterTitulo] = useState('');
   const [filterDiscente, setFilterDiscente] = useState('');
   const [filterOrientador, setFilterOrientador] = useState('');
@@ -27,7 +27,8 @@ const Filtro = () => {
   const [selectedAreaConhecimento, setSelectedAreaConhecimento] = useState('');
   const [areaAvaliacaoData, setAreaAvaliacaoData] = useState([]);
   const [selectedAreaAvaliacao, setSelectedAreaAvaliacao] = useState('');
-  const [queryParams, setQueryParams] = useState('');
+  const [queryParams, setQueryParams] = useContext(pretademiaContext);
+  const [filteredData, setFilteredData] = useContext(pretademiaContext);
 
   useEffect(() => {
     const fetchEntidadeEnsino = async () => {

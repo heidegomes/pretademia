@@ -1,7 +1,9 @@
 import styles from './table.module.css';
+import { useContext } from 'react';
+import { pretademiaContext } from '../context/pretademiaContext';
 
 const Table = () => {
-
+  const { filteredData } = useContext(pretademiaContext);
   return (
     <div className={styles.table__container}>
       <table className={styles.table}>

@@ -21,6 +21,7 @@
     "convert-excel-to-json": "^1.7.0",
     "cors": "^2.8.5",
     "crc-32": "^1.2.2",
+    "create-react-context": "^0.3.0",
     "csv": "^0.3.7",
     "deep-extend": "^0.6.0",
     "deepmerge": "^2.2.1",

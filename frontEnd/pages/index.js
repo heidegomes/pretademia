@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Filtro from '../components/filtro';
 import Table from '../components/table';
+import PretademiaProvider from '../context/pretademiaProvider';
 
-// Na página principal (SuaPagina)
 const Home = () => {
   return (
-    <div>
+    <PretademiaProvider>
       <Filtro />
-      {/* <Table /> */}
-    </div>
+      <Table />
+    </PretademiaProvider>
   );
 };
 export default Home;
