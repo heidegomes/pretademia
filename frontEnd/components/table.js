@@ -1,7 +1,7 @@
-// Server component - Table.js
 import styles from './table.module.css';
 
-const Table = ({ filteredData }) => {
+const Table = () => {
+
   return (
     <div className={styles.table__container}>
       <table className={styles.table}>
@@ -28,7 +28,7 @@ const Table = ({ filteredData }) => {
         </thead>
         <tbody>
           {filteredData.map((item) => (
-            <tr key={item.id} className={styles.td}>
+            <tr key={item.discente} className={styles.td}>
               <td>{item.ano}</td>
               <td>{item.regiao}</td>
               <td>{item.uf_ies}</td>
@@ -46,7 +46,6 @@ const Table = ({ filteredData }) => {
               <td>{item.linha_pesquisa}</td>
               <td>{item.orientador}</td>
               <td>{item.hyperlink}</td>
-              {/* Adicione outras células conforme necessário */}
             </tr>
           ))}
         </tbody>

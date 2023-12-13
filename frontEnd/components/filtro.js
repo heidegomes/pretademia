@@ -7,6 +7,7 @@ import { years, regions, uf, grauAcademico } from '../services/dataFilters';
 
 const Filtro = () => {
   const router = useRouter();
+  const [filteredData, setFilteredData] = useState([]);
   const [filterTitulo, setFilterTitulo] = useState('');
   const [filterDiscente, setFilterDiscente] = useState('');
   const [filterOrientador, setFilterOrientador] = useState('');
@@ -26,7 +27,7 @@ const Filtro = () => {
   const [selectedAreaConhecimento, setSelectedAreaConhecimento] = useState('');
   const [areaAvaliacaoData, setAreaAvaliacaoData] = useState([]);
   const [selectedAreaAvaliacao, setSelectedAreaAvaliacao] = useState('');
-
+  const [queryParams, setQueryParams] = useState('');
 
   useEffect(() => {
     const fetchEntidadeEnsino = async () => {
@@ -86,25 +87,47 @@ const Filtro = () => {
 
   }, []);
 
-  const handleFilter = () => {  // Aplica o filtro apenas quando o botão é clicado
-    const queryParams = {};
-    console.log("cliquei aqui")
-    if (filterTitulo) queryParams.titulo = filterTitulo;
-    if (filterDiscente) queryParams.discente = filterDiscente;
-    if (filterOrientador) queryParams.orientador = filterOrientador;
-    if (palavraChave) queryParams.palavra_chave = palavraChave;
-    if (linhaPesquisa) queryParams.linha_pesquisa = linhaPesquisa;
-    if (selectedGrauAcademico) queryParams.grau_academico = grauAcademico;
-    if (selectedYear) queryParams.ano = selectedYear;
-    if (selectedRegiao) queryParams.regiao = selectedRegiao;
-    if (selectedUF) queryParams.uf = selectedUF;
-    if (selectedEntidadeEnsino) queryParams.entidade_ensino = selectedEntidadeEnsino;
-    if (selectedPrograma) queryParams.programa = selectedPrograma;
-    if (selectedGrandeAreaConhecimento) queryParams.grande_area_conhecimento = selectedGrandeAreaConhecimento;
-    if (selectedAreaConhecimento) queryParams.area_conhecimento = selectedAreaConhecimento;
-    if (selectedAreaAvaliacao) queryParams.area_avaliacao = selectedAreaAvaliacao;
+  useEffect(() => {
+    const fetchFilteredData = async () => {
+      try {
+        const response = await fetch(`http://localhost:3001/projects?${queryParams}`);
+        const filteredData = await response.json();
+        setFilteredData(filteredData);
+        console.log(filteredData);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchFilteredData();
+  }, [queryParams]);
 
-    router.push(`search=${queryParams}`);
+
+  const handleFilter = () => {  // Aplica o filtro apenas quando o botão é clicado
+    const queryParamsObj = {};
+    console.log("cliquei aqui")
+    if (filterTitulo) queryParamsObj.titulo = filterTitulo;
+    if (filterDiscente) queryParamsObj.discente = filterDiscente;
+    if (filterOrientador) queryParamsObj.orientador = filterOrientador;
+    if (palavraChave) queryParamsObj.palavra_chave = palavraChave;
+    if (linhaPesquisa) queryParamsObj.linha_pesquisa = linhaPesquisa;
+    if (selectedGrauAcademico) queryParamsObj.grau_academico = grauAcademico;
+    if (selectedYear) queryParamsObj.ano = selectedYear;
+    if (selectedRegiao) queryParamsObj.regiao = selectedRegiao;
+    if (selectedUF) queryParamsObj.uf = selectedUF;
+    if (selectedEntidadeEnsino) queryParamsObj.entidade_ensino = selectedEntidadeEnsino;
+    if (selectedPrograma) queryParamsObj.programa = selectedPrograma;
+    if (selectedGrandeAreaConhecimento) queryParamsObj.grande_area_conhecimento = selectedGrandeAreaConhecimento;
+    if (selectedAreaConhecimento) queryParamsObj.area_conhecimento = selectedAreaConhecimento;
+    if (selectedAreaAvaliacao) queryParamsObj.area_avaliacao = selectedAreaAvaliacao;
+
+    const queryParams = new URLSearchParams(queryParamsObj).toString();
+
+    router.push({
+      pathname: '/',
+      query: queryParams,
+    });
+
+    setQueryParams(queryParams)
   };
 
   return (
