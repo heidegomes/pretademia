@@ -52,7 +52,7 @@ const getAll = async (object) => {
     values.push(discente);
   }
   if (projeto != null) {
-    query += ' AND projeto = ?';
+    query += ' AND projeto like \'%?%\'';
     values.push(projeto);
   }
   if (grau_academico != null) {
