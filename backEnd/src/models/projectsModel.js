@@ -48,32 +48,32 @@ const getAll = async (object) => {
     values.push(area_avaliacao);
   }
   if (discente != null) {
-    query += ' AND discente like \'%?%\'';
-    values.push(discente);
+    query += ' AND discente like ? ';
+    values.push(`%${discente}%`);
   }
   if (projeto != null) {
-    query += ' AND projeto like \'%?%\'';
-    values.push(projeto);
+    query += ' AND projeto like ?';
+    values.push(`%${projeto}%`);
   }
   if (grau_academico != null) {
     query += ' AND grau_academico = ?';
     values.push(grau_academico);
   }
   if (palavra_chave != null) {
-    query += ' AND palavra_chave like \'%?%\'';
-    values.push(palavra_chave);
+    query += ' AND palavra_chave like ?';
+    values.push(`%${palavra_chave}%`);
   }
   if (resumo != null) {
     query += ' AND resumo = ?';
     values.push(resumo);
   }
   if (linha_pesquisa != null) {
-    query += ' AND linha_pesquisa like \'%?%\'';
-    values.push(linha_pesquisa);
+    query += ' AND linha_pesquisa like ?';
+    values.push(`%${linha_pesquisa}%`);
   }
   if (orientador != null) {
-    query += ' AND orientador like \'%?%\'';
-    values.push(orientador);
+    query += ' AND orientador like ?';
+    values.push(`%${orientador}%`);
   }
   if (nm_uf_ies != null) {
     query += ' AND nm_uf_ies = ?';
@@ -100,7 +100,6 @@ const getAll = async (object) => {
   query += ' LIMIT ? OFFSET ?';
 
   const [result] = await connection.execute(query, values);
-  // console.log(result);
   return result;
 };
 
