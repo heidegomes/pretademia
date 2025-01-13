@@ -1,0 +1,17 @@
+{
+  "name": "teses-mulheres-negras",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "lint": "eslint ."
+  },
+  "author": "Heide Gomes Casagrande",
+  "license": "ISC",
+  "dependencies": {
+    "convert-excel-to-json": "^1.7.0",
+    "xlsx-to-json": "^0.3.0"
+  }
+}
